@@ -24,8 +24,8 @@ app.post("/", async (req, res) => {
       try {
         res.send(await searchNewsArticles(data));
       } catch (error) {
-        res.status(500);
         console.error(error.message);
+        res.status(500);
       }
       break;
     case "topHeadlines":
@@ -37,7 +37,7 @@ app.post("/", async (req, res) => {
       }
       break;
     default:
-      res.send({ message: "Invalid action type" });
+      res.send({ message: "Invalid action type" }).status(400);
       break;
   }
 });
